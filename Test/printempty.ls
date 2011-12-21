@@ -1,0 +1,6 @@
+
+def compute main()
+{
+    print("");
+    
+}

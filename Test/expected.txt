@@ -1,0 +1,24 @@
+arithadddouble~7.0
+arithaddint~7
+arithdivdouble~0.9333333333333333
+arithdivint~3
+arithmultdouble~9.0
+arithmultint~10
+arithsubdouble~-2.0
+arithsubint~4
+basiccompute~5.0
+comment~
+declareassignint~6
+greaterthan~false
+greaterthandouble~true
+greaterthanequals~true
+ifcomparedifferentnumbertypes~3 > 2.321
+lessthan~true
+lessthanequals~true
+print~Hello world
+printempty~
+longprint~#This is replaced in the test script
+ifif~1=1
+ifelse~1!=2
+whiletest~9
+validcall1~5.0
