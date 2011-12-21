@@ -8,23 +8,24 @@
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #5efb2d;
+      background-color: #FFF;
       font-family: Helvetica, Arial, FreeSans, san-serif;
       color: #000000;
     }
     #container {
       margin: 0 auto;
-      width: 700px;
+      width: auto;
     }
-    h1 { font-size: 3.8em; color: #a104d2; margin-bottom: 3px; }
+    h1 { font-size: 3.8em; color: #0F0F0F; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #a104d2; }
-    h3 { text-align: center; color: #a104d2; }
-    a { color: #a104d2; }
+    h2 { font-size: 1.5em; color: #0F0F0F; }
+    h3 { text-align: left; color: #0F0F0F;  border-bottom: solid 1px black;}
+    a { color: #0F0F0F; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .dl-container { width: 700px }
     .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
+    pre { background: #000; color: #fff; padding: 15px; width: 700px}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
@@ -35,49 +36,85 @@
 
   <div id="container">
 
-    <div class="download">
-      <a href="https://github.com/ethanhann/Lsystem-Compiler/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/ethanhann/Lsystem-Compiler/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
 
-    <h1><a href="https://github.com/ethanhann/Lsystem-Compiler">Lsystem-Compiler</a>
-      <span class="small">by <a href="https://github.com/ethanhann">ethanhann</a></span></h1>
+    <h1><a href="https://github.com/ethanhann/Lsystem-Compiler">Lsystem-Compiler</a></h1>
 
     <div class="description">
       Compiles Lsystem source code into Java bytecode.
     </div>
+    <div class="dl-container">
+	    <div class="download">
+	      <a href="https://github.com/ethanhann/Lsystem-Compiler/zipball/master">
+	        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+	      <a href="https://github.com/ethanhann/Lsystem-Compiler/tarball/master">
+	        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+	    </div>
+	    <h2>Download</h2>
+	    
+	    <p>
+	      You can download this project in either
+	      <a href="https://github.com/ethanhann/Lsystem-Compiler/zipball/master">zip</a> or
+	      <a href="https://github.com/ethanhann/Lsystem-Compiler/tarball/master">tar formats.
+	    </p>
+	    
+	    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+	      by running:
+	      <pre>$ git clone git://github.com/ethanhann/Lsystem-Compiler</pre>
+	    </p>
+    </div>
+	
+	<h2>How to Compile</h2>
+	<p>Compiling the Lsystem compiler is easy...
+	<pre>$ cd Lsystem-Compiler<br />$ make</pre>
+	</p>
+	<p>Compiling an Lsystem program is easy too...
+	<pre>$ cd Lsystem-Compiler/_build<br />$ lsystem -c foo.ls</pre>
+	</p>
+	
+	<h2>Example Programs</h2>
+	<!-- Dragon Curve  -->
+	<h3>Dragon Curve</h3>
+	<h4>Source:</h4>
+	<pre>
+def draw dragonCurve(int level){
+    alphabet:  (X,Y,Z);
+    rules:{
+        lambda -> Z;
+        Z -> f X;
+        X -> X l Y f;
+        Y -> f X r Y;
+    }
+}
 
-    
+def compute main(){	
+	dragonCurve(20);
+}
+	</pre>
+	<h4>Output:</h4>
+	<div><img src="images/dragon.png" /></div>
+	
+	<!-- Levy C Curve  -->
+	<h3>Levy C Curve</h3>
+	<h4>Source:</h4>
+	<pre>
+def draw levycCurve(int level){
+    alphabet:  (X);
+    rules:{
+        lambda -> X;
+        X -> r f X l l f X r;
+        l = turn(-45);
+        r = turn(45);
+    }
+}
 
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Ethan (ethanhann@gmail.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Ethan (ethanhann@gmail.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/ethanhann/Lsystem-Compiler/zipball/master">zip</a> or
-      <a href="https://github.com/ethanhann/Lsystem-Compiler/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/ethanhann/Lsystem-Compiler</pre>
-    </p>
-
+def compute main(){	
+	levycCurve(24);
+}
+	</pre>
+	<h4>Output:</h4>
+	<div><img src="images/levyc.png" /></div>
+	
+	
     <div class="footer">
       get the source code on GitHub : <a href="https://github.com/ethanhann/Lsystem-Compiler">ethanhann/Lsystem-Compiler</a>
     </div>
