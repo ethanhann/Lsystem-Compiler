@@ -35,7 +35,7 @@ class Turtle extends JPanel {
 	public static final int SETX = 4;
 	public static final int SETY = 5;
 	public static boolean testing = "
-  
+
 let std_turtle2 = "
 	public static int DEFAULT = testing ? 100 : 400;
 	private double x = 0;
@@ -222,7 +222,7 @@ let std_turtle3 =
 		this.y = y;
 	}
 	public void print(String args){
-    jta.append(args);
+		jta.append(args);
 		if (testing) System.out.println(args);
 	}
 	public void print(int args){

@@ -51,10 +51,11 @@ let _ =
 		match action with 
 			| Ast -> let listing = Ast.string_of_program program in print_string listing
 			| SA -> ignore (Semantic.check_program program);
-			| Compile -> if(Semantic.check_program program) then
-				            let listing = Compile.translate program prog_name verbose testmode in print_string listing
-									else 
-										raise(Failure("\nInvalid program.\n"))
+			| Compile -> 
+					if Semantic.check_program program 
+						then let listing = Compile.translate program prog_name verbose testmode in 
+							print_string listing
+						else raise(Failure("\nInvalid program.\n"))
 	with 
 		| InvalidArgument -> ignore (Printf.printf "InvalidArgument\n %s\n" usage)
 		| NoInputFile -> ignore (Printf.printf "The second argument must be the name of an l-system file\n %s\n" usage)

@@ -7,8 +7,9 @@
 #
 #Three phases: Compiles and runs computational test files in Test/, attempts to compile erroneous test files in Test/Semantic, and compiles, runs, then validates image output data for test files in Test/Draw.
 ################################
+make
 FILES="Test/*.ls"
-ACTION="-c" #Add in -t later
+ACTION="-c"
 TESTACTION="-t"
 EXECUTABLE="./lsystem"
 finalarr=()
@@ -36,7 +37,7 @@ done
 fails=${#arr[@]}
 if [ $fails != 0 ]
 then
-	echo "${#arr[@]} test file(s) did not compile properly:"
+	echo "${#arr[@]} test file(s) did not compile properly:" #Output list of files that did not compile to Java as expected
 	for var in "${arr[@]}"
 		do
 		echo "${var}"
@@ -69,7 +70,7 @@ do
 		echo "Error compiling $shortname"
 	fi
 done
-fails2=${#arr2[@]}
+fails2=${#arr2[@]} #output list of files that did not compile from Java to class files as expected
 if [ $fails2 != 0 ]
 then
 	echo "${#arr2[@]} java file(s) did not compile properly:"
@@ -137,7 +138,7 @@ Hello world"
 done
 
 
-fails3=${#arr3[@]}
+fails3=${#arr3[@]} #Output list of files that did not execute properly
 if [ $fails3 != 0 ]
 then
 	echo "${#arr3[@]} java file(s) did not execute properly or did not compile from Java into Java bytecode:"
@@ -181,7 +182,7 @@ do
 	fi
 	echo ""
 done
-semanticfails=${#semanticarr[@]}
+semanticfails=${#semanticarr[@]} #Output list of files that did not fail to compile as expected
 if [ $semanticfails != 0 ]
 then
 	echo "${#semanticarr[@]} test file(s) did not fail properly:"
@@ -254,9 +255,9 @@ do
 	rm $noex.txt
 	echo ""
 done
-drawfails=${#arr5[@]}
-let "drawfails += ${#arr6[@]}"
-let "drawfails += ${#arr7[@]}"
+drawfails=${#arr5[@]} #List of drawing files that failed to compile to Java
+let "drawfails += ${#arr6[@]}" #List of drawing files that failed to compile from Java to a class file
+let "drawfails += ${#arr7[@]}" #List of drawing files that ran and output different image output than expected
 if [ $drawfails != 0 ]
 then
 	echo "$drawfails test file(s) did not behave as expected in this stage:"

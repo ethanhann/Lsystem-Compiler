@@ -54,25 +54,24 @@ let get_dfuncs = function DFunc(fdecl) -> draw_fdecl fdecl | _ -> ""
 
 let get_cfuncs = function CFunc(fdecl) -> translate_compute_fdecl fdecl | _ -> ""
 
-let get_dcalls = function DFunc(fdecl) -> let name = fdecl.name in "public void " ^ name ^ "(int depth){\n" ^ "draw(\"" ^ name ^ "\", depth);\n}\n" | _ -> ""
+let get_dcalls = function DFunc(fdecl) -> let name = fdecl.name in "	public void " ^ name ^ "(int depth){\n" ^ "		draw(\"" ^ name ^ "\", depth);\n	}\n" | _ -> ""
 			
 let translate funcs prog_name verbose testmode =
 	let out_chan = open_out (prog_name ^ ".java") in
 		let translated_prog = 
 			Lsystemstd.std_turtle1 ^ (if testmode then "true;" else "false;") ^ Lsystemstd.std_turtle2 ^ prog_name ^ Lsystemstd.std_turtle3 ^
 			"public class " ^ prog_name ^ " extends Turtle {\n" ^ global_replace (Str.regexp "CLASSNAME") prog_name Lsystemstd.std_main ^ 
-       "	public " ^ prog_name ^ "(){\n" ^ String.concat "" (List.map get_dfuncs funcs) ^ "		execute();\n		scale(1);\n	}\n" ^ 
-       String.concat "" (List.map get_cfuncs funcs) ^
-       String.concat "" (List.map get_dcalls funcs) ^ "}\n"
-       in 
-        let proc_status = ignore(Printf.fprintf out_chan "%s" translated_prog) ; 
-													close_out out_chan ; 
-                          Sys.command (Printf.sprintf "javac %s.java" prog_name) in
-        	match proc_status with
-          | 0 -> if verbose then
-          				 translated_prog ^ "\nCompilation successful\n" 
-                 else
-                 	 "Compilation successful\n"
+			"	public " ^ prog_name ^ "(){\n" ^ String.concat "" (List.map get_dfuncs funcs) ^ "		execute();\n		scale(1);\n	}\n" ^ 
+			String.concat "" (List.map get_cfuncs funcs) ^
+			String.concat "" (List.map get_dcalls funcs) ^ "}\n"
+		in 
+			let proc_status = ignore(Printf.fprintf out_chan "%s" translated_prog); 
+				close_out out_chan; 
+				Sys.command (Printf.sprintf "javac %s.java" prog_name) in
+					match proc_status with
+					  0 -> if verbose 
+										then translated_prog ^ "\nCompilation successful\n" 
+										else "Compilation successful\n"
 					| _ -> "\nCompilation of Java bytecode unsuccessful!\n" ^
-								 Printf.sprintf "Javac Process Return Code: %i\n" proc_status ^
-          			 Printf.sprintf "Compilation Command: javac %s.java\n" prog_name
+							Printf.sprintf "Javac Process Return Code: %i\n" proc_status ^
+							Printf.sprintf "Compilation Command: javac %s.java\n" prog_name

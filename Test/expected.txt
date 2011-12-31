@@ -22,3 +22,6 @@ ifif~1=1
 ifelse~1!=2
 whiletest~9
 validcall1~5.0
+validreturn~1.0
+validreturn2~1.0
+validreturn3~1.0
