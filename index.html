@@ -8,14 +8,16 @@
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #FFF;
+      background-color: #DDD;
       font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
+      color: #0F0F0F;
     }
     #container {
       margin: 0 auto;
-      width: auto;
+      width: 900px
     }
+    .gist, .black-border { border: solid 1px black; }
+    
     h1 { font-size: 3.8em; color: #0F0F0F; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
@@ -25,7 +27,6 @@
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .dl-container { width: 700px }
     .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px; width: 700px}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
@@ -75,49 +76,44 @@
 	</p>
 	
 	<h2>Example Programs</h2>
+	<p>Not that these gists have a .py extension. This is merely for syntax highlighting. The LSystem compiler requires the .ls file extension, NOT the .py extension.</p>
 	<!-- Dragon Curve  -->
 	<h3>Dragon Curve</h3>
 	<h4>Source:</h4>
-	<pre>
-def draw dragonCurve(int level){
-    alphabet:  (X,Y,Z);
-    rules:{
-        lambda -> Z;
-        Z -> f X;
-        X -> X l Y f;
-        Y -> f X r Y;
-    }
-}
-
-def compute main(){	
-	dragonCurve(20);
-}
-	</pre>
+    <script src="https://gist.github.com/1610379.js?file=gistfile1.py"></script>
 	<h4>Output:</h4>
-	<div><img src="images/dragon.png" /></div>
+    <img src="images/dragon.png" class="black-border" />
 	
 	<!-- Levy C Curve  -->
 	<h3>Levy C Curve</h3>
 	<h4>Source:</h4>
-	<pre>
-def draw levycCurve(int level){
-    alphabet:  (X);
-    rules:{
-        lambda -> X;
-        X -> r f X l l f X r;
-        l = turn(-45);
-        r = turn(45);
-    }
-}
-
-def compute main(){	
-	levycCurve(24);
-}
-	</pre>
+    <script src="https://gist.github.com/1610409.js?file=gistfile1.py"></script>
 	<h4>Output:</h4>
-	<div><img src="images/levyc.png" /></div>
-	
-	
+	<img src="images/levyc.png" class="black-border" />
+
+    <!-- Circuit Comet -->
+    <h3>Circuit Comet</h3>
+    <h4>Source:</h4>
+    <script src="https://gist.github.com/1610468.js?file=gistfile1.py"></script>
+    <h4>Output:</h4>
+    <img src="images/circuitComet.png" class="black-border" />
+
+    <!-- Robot -->
+    <h3>Robot</h3>
+    <h4>Source:</h4>
+    <script src="https://gist.github.com/1610496.js?file=gistfile1.py"></script>
+    <h4>Output:</h4>
+    <img src="images/robot.png" class="black-border" />
+
+    <!-- Dancing Monster  -->
+    <h3>Dancing Monster</h3>
+    <h4>Source:</h4>
+    <script src="https://gist.github.com/1610459.js?file=gistfile1.py"></script>
+    <h4>Output:</h4>
+    <img src="images/dancingMonster.png" class="black-border" />
+
+
+    	
     <div class="footer">
       get the source code on GitHub : <a href="https://github.com/ethanhann/Lsystem-Compiler">ethanhann/Lsystem-Compiler</a>
     </div>
