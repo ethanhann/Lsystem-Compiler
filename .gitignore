@@ -1,0 +1,8 @@
+*.class
+*.java
+*.cmi
+*.cmo
+*.ml
+*.mli
+lsystem
+
